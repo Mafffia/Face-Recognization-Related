@@ -58,8 +58,8 @@ fig = plt.figure()
 ax = Axes3D(fig)
 
 font = {'color':'darkred',"size":13,"family":"serif"}
-plt.style.use("dark_background")
-plt.figure(figsize=(8,5))
+# plt.style.use("dark_background")
+# plt.figure(figsize=(8,5))
 ax.scatter(face_umap[:,0],face_umap[:,1],face_umap[:,2],c=label,alpha=0.4,cmap='Paired')
 # cbar = plt.colorbar(ticks=range(10))
 # cbar.set_label(label="digit value",fontdict=font)
