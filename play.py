@@ -30,7 +30,7 @@ df = pd.DataFrame({'files':pics,'name':names})
 df['name'] = pd.Categorical(df.name).codes
 print(df.head)
 embs = np.zeros((num,512))
-app = FaceAnalysis(model='')
+app = FaceAnalysis()
 label = []
 app.prepare(ctx_id=0, det_size=(640, 640))
 
