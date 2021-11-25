@@ -37,13 +37,34 @@ def get_img_pairs_list(pairs_txt_path,img_path):
 def gen_all_pic_labels(img_path):
     pics = []
     names = []
+    genders = []
+    gender = gender_dict()
     for i in os.listdir(img_path):
         if os.path.isdir(os.path.join(img_path,i)):
             for filename in os.listdir(os.path.join(img_path,i)):
+                if(filename=='.DS_Store'):
+                    continue
                 path = os.path.join(img_path,i,filename)
+                if(filename in gender.keys()):
+                    genders.append(gender[filename])
+                else:
+                    print(filename)
                 pics.append(str(path))
                 names.append(i)
-    return pics,names
+    return pics,names,genders
+
+def gender_dict():
+    gender = {}
+    with open('female_names.txt','r') as f:
+        list = f.read().splitlines()
+        for line in list:
+            gender[str(line)] = 'female'
+
+    with open('male_names.txt','r') as f:
+        list = f.read().splitlines()
+        for line in list:
+            gender[str(line)] = 'male'
+    return gender
 
 
 
@@ -53,5 +74,6 @@ def gen_all_pic_labels(img_path):
 # print(len(imgpair_label),len(labels))
 # print(imgpair_label[0],labels[0])
 
-pics,names = gen_all_pic_labels('./lfw_funneled/')
-print(pics[0],names[0])
+
+pics,names,genders = gen_all_pic_labels('./lfw_funneled/')
+# print(pics[0],names[0])
