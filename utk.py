@@ -6,6 +6,9 @@ def get_utk_files(img_path):
     races =  []
     files = []
     for filename in os.listdir(os.path.join(img_path)):
+        #avoid macos prob
+        if('ds' in filename):
+            continue
         path = os.path.join(img_path,filename)
         files.append(str(path))
         try:
